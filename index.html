@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <h1 class="logo">
+        <a href="#" onclick="showHomePage(); return false;">MyShop</a>
+      </h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showHomePage()">Home</a></li>
+                <li><a href="#" onclick="showProductsPage()">Products</a></li>
+                <li><a href="#" onclick="showCartPage()">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#" onclick="showSellerDashboard()">Seller Dashboard</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="search-container">
+      <div class="search-bar">
+        <form onsubmit="searchProducts(); return false;">
+          <input type="text" id="search-input" placeholder="Search products..." onkeypress="handleKeyPress(event)">
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="auth-buttons">
+      <button id="login-btn" onclick="showAuthModal('login')">Login</button>
+      <button id="signup-btn" onclick="showAuthModal('signup')">Sign Up</button>
+      <div id="user-greeting" style="display:none">
+          <span id="username-display"></span>
+          <button onclick="logout()">Logout</button>
+      </div>
+  </div>
+</header>
+
+    <main id="main-content">
+        <!-- Content loads here -->
+    </main>
+
+    <!-- Auth Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModals()">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModals()">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required minlength="6">
+                <div class="membership-options">
+                    <label><input type="radio" name="membership" value="regular" checked> Regular (Free)</label>
+                    <label><input type="radio" name="membership" value="premium"> Premium ($9.99/month)</label>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>MyShop - Premium products since 2024</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@myshop.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 MyShop. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
